@@ -2,10 +2,10 @@ name: Continuous Integration
 
 on: push
 
-env:
-  DB_NAME: test
-  DB_USER: root
-  DB_PASSWORD: root
+# env:
+#   DB_NAME: test
+#   DB_USER: root
+#   DB_PASSWORD: root
 
 jobs:
   run_code_checks:
@@ -25,10 +25,10 @@ jobs:
           go fmt ./...
           go vet ./...
 
-      - name: Setup MySQL and Create Database
-        run: |
-          mysql -e "ALTER USER '${{env.DB_USER}}'@'localhost' IDENTIFIED BY '${{env.DB_PASSWORD}}';"
-          mysql -e "CREATE DATABASE IF NOT EXISTS ${{env.DB_NAME}};"
+      # - name: Setup MySQL and Create Database
+      #   run: |
+      #     mysql -e "ALTER USER '${{env.DB_USER}}'@'localhost' IDENTIFIED BY '${{env.DB_PASSWORD}}';"
+      #     mysql -e "CREATE DATABASE IF NOT EXISTS ${{env.DB_NAME}};"
 
       - name: Run tests
         run: go test ./...
