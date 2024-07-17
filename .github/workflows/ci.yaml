@@ -24,4 +24,4 @@ jobs:
           go fmt ./..
           go vet ./..
       - name: Run tests
-        uses: 
+        uses: go test
